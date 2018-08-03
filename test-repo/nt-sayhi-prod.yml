@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: nt-sayhi
+  profiles:
+    active: prod
+ 
+server:
+  context-path: /
+  port: 20001
+   
+#Spring eureka配置
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+test:
+  name: cloud repo
+
+#Logging 配置
+logging:
+  file: /data/logs/sloth/${spring.application.name}/${spring.application.name}.log
+  level:
+    com.fd.sloth.sayhi: INFO
