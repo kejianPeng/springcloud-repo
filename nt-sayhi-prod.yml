@@ -18,7 +18,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 test:
-  name: cloud test repo
+  name: cloud root repo
 
 #Logging 配置
 logging:
