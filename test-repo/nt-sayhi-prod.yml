@@ -3,10 +3,6 @@ spring:
     name: nt-sayhi
   profiles:
     active: prod
- 
-server:
-  context-path: /
-  port: 20001
    
 #Spring eureka配置
 eureka:
