@@ -46,7 +46,7 @@ logging:
 newcar:
   task:
     extractPrice: # 新车价格抽取定时任务
-      cron: 0 */1 * * * ? # 每日凌晨 0 点执行
+      cron: */15 * * * * ? # 每日凌晨 0 点执行
 
 server:
   context-path: /
