@@ -1,0 +1,53 @@
+spring:
+  profiles:
+    active: prod
+  application:
+    name: nt-new-car
+  datasource:
+    db_sct_vip:
+      url: jdbc:mysql://172.16.0.25:3306/db_sct_vip?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&useSSL=false
+      username: zhuoren
+      password: zhuoren3553!
+      driver-class-name: com.mysql.jdbc.Driver
+      test-while-idle: true
+      test-on-borrow: false
+      validation-query: SELECT 1
+      time-between-eviction-runs-millis: 300000
+      min-evictable-idle-time-millis: 1800000
+    db_lion:
+      url: jdbc:mysql://172.16.0.23:3307/db_lion?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&useSSL=false
+      username: wanglu
+      password: Wanglu_running1500!
+      driver-class-name: com.mysql.jdbc.Driver
+      test-while-idle: true
+      test-on-borrow: false
+      validation-query: SELECT 1
+      time-between-eviction-runs-millis: 300000
+      min-evictable-idle-time-millis: 1800000
+
+#Spring eureka配置
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#Logging 配置
+logging:
+  file: /data/logs/Microserivces/${spring.application.name}.log
+  level:
+    cn.newtouch.newcar: INFO
+    cn.newtouch.newcar.dao.sctvip: INFO
+    cn.newtouch.newcar.dao.lion: INFO
+  
+# 参数配置
+newcar:
+  task:
+    extractPrice: # 新车价格抽取定时任务
+      cron: 0/5 * * * * ? # 每日凌晨 0 点执行
+
+server:
+  context-path: /
+  port: 20032
