@@ -32,7 +32,7 @@ eureka:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
     serviceUrl:
-      defaultZone: http://cyhz-17:8761/eureka,http://cyhz-10:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
 
 #Logging 配置
 logging:
@@ -46,7 +46,7 @@ logging:
 newcar:
   task:
     extractPrice: # 新车价格抽取定时任务
-      cron: 0 10 0 * * ? # 每日凌晨 0 点执行
+      cron: 0/5 * * * * ? # 每日凌晨 0 点执行
 
 server:
   context-path: /
