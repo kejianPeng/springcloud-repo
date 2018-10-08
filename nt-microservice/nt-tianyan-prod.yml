@@ -39,7 +39,7 @@ baseUrl: https://api.cyhz.com/v2/
 tianyan:
   pubVolume:
     url: http://www.baidu.com
-    cron: 0 20 16 * * ?
+    cron: 0 25 16 * * ?
 
 #Logging 配置
 logging:
