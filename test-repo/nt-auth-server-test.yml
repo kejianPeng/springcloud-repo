@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: test
+  include: application-redis_test, db_sct_vip_test, db_lion_test
+  application:
+    name: nt-auth-server-test
+
+#Spring eureka配置
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+#Logging 配置
+logging:
+  file: /data/logs/microservices/${spring.application.name}/${spring.application.name}.log
+  level:
+    com.newtouch.auth: INFO
+    com.newtouch.auth.dao.sctvip: INFO
+    com.newtouch.auth.dao.lion: INFO
+    
+# 关闭验证
+management:
+  security:
+    enabled: false
+  
+# 参数配置
+redis:
+  key:
+    openapi: openapi_session_key_string_
+    disweb: dis_session_key_string_
+
+server:
+  context-path: /
+  port: 20035
