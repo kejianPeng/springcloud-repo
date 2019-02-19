@@ -2,7 +2,6 @@
 spring:
   profiles:
     active: test
-  include: redis_test, db_sct_vip_test, db_lion_test
   application:
     name: nt-auth-server-test
 
